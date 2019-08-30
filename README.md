@@ -1,2 +1,7 @@
-# cp3405-tiny
-JCU CP3405 (Design Thinking III) Assignment
+# CP3405 (Design Thinking III)
+
+# Team Members
+- Thomas Leumann
+- Isabelle Carlsson
+- Nickolas Jucker
+- Yvan Burrie
