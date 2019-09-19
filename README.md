@@ -1,7 +1,10 @@
-# CP3405 (Design Thinking III)
+# CP3405 - Design Thinking III
 
-# Team Members
+## Team Members
 - Thomas Leumann
 - Isabelle Carlsson
 - Nickolas Jucker
 - Yvan Burrie
+
+## Dependencies
+- Laravel
