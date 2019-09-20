@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// search route placeholder for now until controller made
+//return the name('search) allows for easy use in views when using action={{route('search)}}
+// TODO implement searchcontroller
+Route::any('/search', function () {
+    return view('welcome');
+})->name('search');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
