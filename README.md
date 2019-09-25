@@ -8,3 +8,6 @@
 
 ## Dependencies
 - Laravel
+  - XAMPP or WAMP
+  - Composer
+  - PhpStorm
