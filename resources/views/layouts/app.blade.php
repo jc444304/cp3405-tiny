@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <img class="" src="images/jculogo.png" alt="" width="32" height="32">
+            <img class="" src="../images/jculogo.png" alt="" width="32" height="32">
             <div class="container">
               <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
