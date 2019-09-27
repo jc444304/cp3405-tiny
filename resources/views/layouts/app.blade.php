@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'JobLink') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -34,8 +34,8 @@
                 <!-- Branding Image -->
                 <a class="navbar-brand d-flex" href="{{ url('/') }}">
                     <div>
-                        <img src="/svg/jcu_logo_normal.svg" alt="" style="height: 25px" class="pr-3">
-                        {{ config('app.name', 'JobLink') }}
+                        <img src="{{ asset('img/logo.svg') }}'" alt="" style="height: 25px" class="pr-3">
+                        {{ config('app.name') }}
                     </div>
                 </a>
             </div>
