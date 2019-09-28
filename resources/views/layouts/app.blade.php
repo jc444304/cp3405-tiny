@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -46,6 +47,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
 
@@ -61,11 +63,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        @if (Route::current()->getName() !== '/')
                         <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="POST">
                             @csrf
                             <input class="form-control mr-sm-2" type="search" placeholder="Enter search term ..." aria-label="'Search" name="searchterm">
                             <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                         </form>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -88,8 +95,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -107,6 +113,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+
     </div>
 </body>
 </html>

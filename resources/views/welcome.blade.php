@@ -1,19 +1,21 @@
 @extends('layouts.app')
+
 @section('content')
+
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="container pt-5 text-center">
+            <div class="col-md-9">
+                <div class="container text-center">
                     <div class="row">
                         <div class="col-md-9 mx-auto">
-                            <h1 class="display-4">Find Jobs</h1>
+                            <h1>Find Jobs</h1>
                         </div>
                     </div>
                 </div>
                 <div class="card-group">
                     <div class="card text-left">
                         <div class="card-header">
-                            <h4>Terms</h4>
+                            <h5>Terms</h5>
                         </div>
                         <div class="card-body">
                             <input type="text" class="form-control" placeholder="Title, occupation, keyword, etc">
@@ -21,7 +23,7 @@
                     </div>
                     <div class="card text-center">
                         <div class="card-header">
-                            <h4>Categories</h4>
+                            <h5>Categories</h5>
                         </div>
                         <div class="card-body">
                             <select class="custom-select" id="">
@@ -32,7 +34,7 @@
                     </div>
                     <div class="card text-right">
                         <div class="card-header">
-                            <h4>Location</h4>
+                            <h5>Location</h5>
                         </div>
                         <div class="card-body">
                             <div class="input-group">
