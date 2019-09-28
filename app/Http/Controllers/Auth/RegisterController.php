@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -59,14 +60,33 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if($data['userRadioGroup'] == 'student'){
+            $student = $user->student()->create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'user_id' => $user['id']
+            ]);
+
+        } elseif ($data['userRadioGroup'] == 'company'){
+            $company = $user->company()->create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'user_id' => $user['id']
+            ]);
+        }
+
+
+        return $user;
+
     }
 }
