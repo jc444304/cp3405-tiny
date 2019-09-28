@@ -12,6 +12,34 @@
                         @csrf
 
                         <div class="form-group row">
+
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('What kind of account are you creating?') }}</label>
+
+                            <div class="col-md-6 form-group">
+
+                                <!-- Student Radio -->
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" id="studentRadio" name="userRadioGroup">
+                                    <label class="form-check-label" for="studentRadio">Student</label>
+                                </div>
+
+                                <!-- Company Radio -->
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" id="companyRadio" name="userRadioGroup">
+                                    <label class="form-check-label" for="companyRadio">Company</label>
+                                </div>
+
+                                <!-- Teacher Radio -->
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" id="teacherRadio" name="userRadioGroup">
+                                    <label class="form-check-label" for="teacherRadio">Teacher</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
