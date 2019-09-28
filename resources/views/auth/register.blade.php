@@ -19,7 +19,7 @@
 
                                 <!-- Student Radio -->
                                 <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="userRadioGroup" value="student">
+                                    <input type="radio" class="form-check-input" name="userRadioGroup" value="student" checked>
                                     <label class="form-check-label" for="studentRadio">Student</label>
                                 </div>
 
