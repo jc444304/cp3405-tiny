@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->timestamps();
-            $table->string('jcuId')->unique();
+            $table->string('jcu_id')->unique()->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->longText('aboutme')->nullable();

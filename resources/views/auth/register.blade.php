@@ -19,19 +19,19 @@
 
                                 <!-- Student Radio -->
                                 <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" id="studentRadio" name="userRadioGroup">
+                                    <input type="radio" class="form-check-input" name="userRadioGroup" value="student">
                                     <label class="form-check-label" for="studentRadio">Student</label>
                                 </div>
 
                                 <!-- Company Radio -->
                                 <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" id="companyRadio" name="userRadioGroup">
+                                    <input type="radio" class="form-check-input" name="userRadioGroup" value="company">
                                     <label class="form-check-label" for="companyRadio">Company</label>
                                 </div>
 
                                 <!-- Teacher Radio -->
                                 <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" id="teacherRadio" name="userRadioGroup">
+                                    <input type="radio" class="form-check-input" name="userRadioGroup" value="teacher">
                                     <label class="form-check-label" for="teacherRadio">Teacher</label>
                                 </div>
 
