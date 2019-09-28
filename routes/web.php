@@ -23,3 +23,5 @@ Route::any('/search', 'SearchController@show')->name('search');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
