@@ -41,5 +41,6 @@
     min-height: $navbar-height-max;
     background-color: transparent !important;
     box-shadow: none !important;
+    transition: background-color 1s ease;
 }
 
