@@ -110,7 +110,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main style="background-image: url({{ asset('img/jcu_campus.jpg') }});background-position:top center;background-size: 100%;background-repeat:no-repeat; padding-top: 200px;" class="gradient-overlay">
             @yield('content')
         </main>
 
