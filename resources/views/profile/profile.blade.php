@@ -6,7 +6,8 @@
             <div class="col-3 p-5">
                 <img src="/images/profile.jpeg"
                      style="height: 150px; box-shadow: 1px 4px 5px grey; border: 4px solid white;"
-                     class="rounded-circle">
+                     class="rounded-circle mx-auto d-block">
+                <div class="text-center p-2"> {{ $user->user_type }}</div>
             </div>
             <div class="col-9 p-5">
                 <div class="d-flex justify-content-between align-items-baseline">
