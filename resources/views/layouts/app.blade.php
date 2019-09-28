@@ -11,6 +11,33 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script defer>
+        // Author: Yvan Burrie
+        window.addEventListener('scroll', function (event) {
+
+            const ontop = 'navbar-ontop';
+            const navbar = $('.navbar');
+            const computedStyle = getComputedStyle(document.documentElement);
+            const navbarHeightMin = computedStyle.getPropertyValue('$navbar-height-min');
+            const navbarHeightMax = computedStyle.getPropertyValue('$navbar-height-max');
+
+            if (scrollY > 50) {
+                if (navbar.hasClass(ontop)) {
+                    navbar.removeClass(ontop);
+                    navbar.animate({
+                        height: navbarHeightMin
+                    }, 100);
+                }
+            } else {
+                if (navbar.hasClass(ontop) === false) {
+                    navbar.addClass(ontop);
+                    navbar.animate({
+                        height: navbarHeightMax
+                    }, 500);
+                }
+            }
+        });
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,11 +48,11 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <img class="" src="../images/jculogo.png" alt="" width="32" height="32">
+
+        <nav class="navbar navbar-expand-lg navbar-light navbar-ontop bg-white fixed-top shadow-sm">
             <div class="container">
-              <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset('img/logo.svg') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" id="logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
