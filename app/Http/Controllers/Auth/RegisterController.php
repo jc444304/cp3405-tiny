@@ -67,24 +67,31 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'user_type' => $data['user_type'],
             'password' => Hash::make($data['password']),
         ]);
 
-        if($data['userRadioGroup'] == 'student'){
+        if($data['user_type'] == 'student'){
             $student = $user->student()->create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'user_id' => $user['id']
             ]);
 
-        } elseif ($data['userRadioGroup'] == 'company'){
+        } elseif ($data['user_type'] == 'company'){
             $company = $user->company()->create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'user_id' => $user['id']
             ]);
-        }
 
+        } elseif ($data['user_type'] == 'teacher'){
+            $teacher = $user->teacher()->create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'user_id' => $user['id']
+            ]);
+        }
 
         return $user;
 
