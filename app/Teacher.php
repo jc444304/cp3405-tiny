@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Teacher extends Model
 {
     /**
      * Fields that are mass assignable
@@ -12,11 +12,11 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
-        'name','email','aboutus','address'
+        'faculty','name','email'
     ];
 
     /**
-     * Get the user that is a company.
+     * Get the user that is a teacher.
      */
     public function user()
     {
