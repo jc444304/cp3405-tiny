@@ -6,3 +6,41 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Gradient background image
+.gradient-overlay {
+    overflow: hidden;
+    position: relative;
+}
+
+.gradient-overlay > *:first-child:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    background: linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(255, 255, 255, 0.84));
+}
+
+.navbar {
+    min-height: $navbar-height-min;
+}
+
+.navbar #logo {
+    height: 50px;
+}
+
+.navbar-ontop #logo {
+    height: 100px;
+}
+
+.navbar-ontop {
+    min-height: $navbar-height-max;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transition: background-color 1s ease;
+}
+
