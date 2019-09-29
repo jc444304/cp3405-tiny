@@ -37,6 +37,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            $user->profile()->create([
+                'title' => 'James Cook University',
+                'description' => 'This is where my description goes',
+                'url' => 'https://website.com'
+            ]);
+        });
+    }
+
     public function student()
     {
         return $this->hasOne('App\Student');
