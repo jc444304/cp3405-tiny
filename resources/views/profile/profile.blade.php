@@ -4,7 +4,7 @@
     <div class="container" style="background-color: white">
         <div class="row">
             <div class="col-3 p-5">
-                <img src="{{ $user->profile->profileImage() }}"
+                <img alt="Profile Image" src="{{ $user->profile->profileImage() }}"
                      style="height: 150px; box-shadow: 1px 4px 5px grey; border: 4px solid white;"
                      class="rounded-circle mx-auto d-block">
             </div>
