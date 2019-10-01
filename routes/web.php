@@ -24,6 +24,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
-Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
-Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
+Route::get('/profile', 'ProfilesController@index')->name('profile.index'); // When the user wants to view their own profile
+Route::get('/profile/{user}', 'ProfilesController@show')->name('profile.show'); // When the user wants to view another user's profile
+Route::get('/profile/edit', 'ProfilesController@edit')->name('profile.edit'); // When a use wants to edit their own profile
+Route::patch('/profile/update', 'ProfilesController@update')->name('profile.update'); // When the user submits their edits to their profile

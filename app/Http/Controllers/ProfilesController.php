@@ -7,18 +7,42 @@ use Illuminate\Http\Request;
 
 class ProfilesController extends Controller
 {
-    public function index(User $user)
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view('profile.profile', compact('user'));
+        $this->middleware('auth');
     }
 
-    public function edit(User $user)
+    public function index()
     {
-        return view('profile.edit', compact('user'));
+        $user = Auth()->user();
+        return redirect("/profile/{$user->id}");
     }
 
-    public function update(User $user)
+    public function show(User $user)
     {
+        $profile = $user->profile();
+        return view('profile.show', compact('profile'))->with('user_type',$user->user_type);
+    }
+
+    public function edit()
+    {
+        error_log('made it to edit function');
+        $user = Auth()->user();
+        $profile = $user->profile();
+
+        return view('profile.edit', compact('profile'))->with('user_type',$user->user_type);
+    }
+
+    public function update()
+    {
+        $user = Auth()->user();
+
         $data = \request()->validate([
             'title' => 'required',
             'description' => 'required',
@@ -26,7 +50,7 @@ class ProfilesController extends Controller
             'image' => '',
         ]);
 
-        auth()->user()->profile->update($data);
+        $user->profile()->update($data);
 
         return redirect("/profile/{$user->id}");
     }
