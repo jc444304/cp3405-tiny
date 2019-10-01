@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
@@ -26,14 +27,15 @@ class ProfilesController extends Controller
 
     public function show(User $user)
     {
-        $profile = $user->profile();
+
+        $profile = $user->profile()->get()[0];
         return view('profile.show', compact('profile'))->with('user_type',$user->user_type);
     }
 
     public function edit()
     {
         $user = Auth()->user();
-        $profile = $user->profile();
+        $profile = $user->profile()->get()[0];
 
         return view('profile.edit', compact('profile'))->with('user_type',$user->user_type);
     }
@@ -41,6 +43,13 @@ class ProfilesController extends Controller
     public function update()
     {
         $user = Auth()->user();
+
+        if (request('image')) {
+            $imagePath = request('image')->store('profile', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+            $imageArray = ['image' => $imagePath];
+        }
 
         switch($user->user_type){
             case('student'):
@@ -53,7 +62,10 @@ class ProfilesController extends Controller
                     'certifications' => '',
                     'image' => '',
                 ]);
-                $user->student()->update($data);
+                $user->student()->update(array_merge(
+                    $data,
+                    $imageArray ?? []
+                ));
                 break;
             case('company'):
                 $data = request()->validate([
@@ -63,7 +75,10 @@ class ProfilesController extends Controller
                     'address' => 'string',
                     'image' => '',
                 ]);
-                $user->company()->update($data);
+                $user->company()->update(array_merge(
+                    $data,
+                    $imageArray ?? []
+                ));
                 break;
             case('teacher'):
                 $data = request()->validate([
@@ -71,7 +86,10 @@ class ProfilesController extends Controller
                     'faculty' => 'string',
                     'image' => '',
                 ]);
-                $user->teacher()->update($data);
+                $user->teacher()->update(array_merge(
+                    $data,
+                    $imageArray ?? []
+                ));
                 break;
         }
 

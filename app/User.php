@@ -63,15 +63,15 @@ class User extends Authenticatable
         switch ($this->user_type)
         {
             case 'student':
-                $profile = $this->student()->get();
+                $profile = $this->student();
                 break;
             case 'company':
-                $profile = $this->company()->get();
+                $profile = $this->company();
                 break;
             case 'teacher':
-                $profile = $this->teacher()->get();
+                $profile = $this->teacher();
                 break;
         }
-        return $profile[0];
+        return $profile;
     }
 }

@@ -4,9 +4,9 @@
     <div class="container" style="background-color: white">
         <div class="row">
             <div class="col-3 p-5">
-                <img src="/images/profile.jpeg"
-                     style="height: 150px; box-shadow: 1px 4px 5px grey; border: 4px solid white;"
-                     class="rounded-circle">
+                <img src="{{ $profile->profileImage() }}"
+                     class="rounded-circle w-100"
+                     style="height: 150px; box-shadow: 1px 4px 5px grey; border: 4px solid white;">
             </div>
             <div class="col-9 p-5">
                 <div class="d-flex justify-content-between align-items-baseline">
