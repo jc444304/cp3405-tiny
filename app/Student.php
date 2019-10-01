@@ -12,7 +12,7 @@ class Student extends Model
      * @var array
      */
     protected $fillable = [
-        'jcu_id','name','email','aboutme','education','experience','certifications'
+        'jcu_id','name','email','aboutme','education','experience','certifications','image'
     ];
 
     /**
@@ -30,5 +30,9 @@ class Student extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function profileImage() {
+        return ($this->image) ? '/storage/' . $this->image : '/images/no-image-available.png';
     }
 }

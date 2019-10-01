@@ -32,7 +32,6 @@ class ProfilesController extends Controller
 
     public function edit()
     {
-        error_log('made it to edit function');
         $user = Auth()->user();
         $profile = $user->profile();
 
@@ -43,15 +42,39 @@ class ProfilesController extends Controller
     {
         $user = Auth()->user();
 
-        $data = \request()->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'url' => 'url',
-            'image' => '',
-        ]);
+        switch($user->user_type){
+            case('student'):
+                $data = request()->validate([
+                    'jcu_id' => 'required',
+                    'email' => ['required', 'email','string'],
+                    'aboutme' => 'string',
+                    'education' => '',
+                    'experience' => '',
+                    'certifications' => '',
+                    'image' => '',
+                ]);
+                $user->student()->update($data);
+                break;
+            case('company'):
+                $data = request()->validate([
+                    'email' => ['required', 'email','string'],
+                    'website' => 'url',
+                    'aboutus' => 'string',
+                    'address' => 'string',
+                    'image' => '',
+                ]);
+                $user->company()->update($data);
+                break;
+            case('teacher'):
+                $data = request()->validate([
+                    'email' => ['required', 'email','string'],
+                    'faculty' => 'string',
+                    'image' => '',
+                ]);
+                $user->teacher()->update($data);
+                break;
+        }
 
-        $user->profile()->update($data);
-
-        return redirect("/profile/{$user->id}");
+        return redirect(route('profile.index'));
     }
 }
