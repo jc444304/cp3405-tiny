@@ -4,45 +4,53 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    public function index(User $user)
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view('profile.profile', compact('user'));
+        $this->middleware('auth');
     }
 
-    public function edit(User $user)
+    public function index()
     {
-        $this->authorize('update', $user->profile);
-        return view('profile.edit', compact('user'));
+        $user = Auth()->user();
+        return redirect("/profile/{$user->id}");
     }
 
-    public function update(User $user)
+    public function show(User $user)
     {
-        $this->authorize('update', $user->profile);
+        $profile = $user->profile();
+        return view('profile.show', compact('profile'))->with('user_type',$user->user_type);
+    }
 
-        $data = request()->validate([
+    public function edit()
+    {
+        error_log('made it to edit function');
+        $user = Auth()->user();
+        $profile = $user->profile();
+
+        return view('profile.edit', compact('profile'))->with('user_type',$user->user_type);
+    }
+
+    public function update()
+    {
+        $user = Auth()->user();
+
+        $data = \request()->validate([
             'title' => 'required',
             'description' => 'required',
             'url' => 'url',
             'image' => '',
         ]);
 
-        if (request('image')) {
-            $imagePath = request('image')->store('profile', 'public');
-
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
-            $image->save();
-
-            $imageArray = ['image' => $imagePath];
-        }
-
-        auth()->user()->profile->update(array_merge(
-            $data,
-            $imageArray ?? []
-        ));
+        $user->profile()->update($data);
 
         return redirect("/profile/{$user->id}");
     }

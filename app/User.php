@@ -67,6 +67,19 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->hasOne(Profile::class);
+        $profile = $this;
+        switch ($this->user_type)
+        {
+            case 'student':
+                $profile = $this->student()->get();
+                break;
+            case 'company':
+                $profile = $this->company()->get();
+                break;
+            case 'teacher':
+                $profile = $this->teacher()->get();
+                break;
+        }
+        return $profile[0];
     }
 }
