@@ -14,7 +14,7 @@ class AddImageToCompany extends Migration
     public function up()
     {
         Schema::table('companies', function (Blueprint $table) {
-            $table->string('image');
+            $table->string('image')->nullable();
         });
     }
 
