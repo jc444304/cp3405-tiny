@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container" style="background-color: white">
-        <form action="/profile/{{ $user->id }}" enctype="multipart/form-data" method="post">
+        <form action="{{route('profile.update')}}" enctype="multipart/form-data" method="post">
             @csrf
             @method('PATCH')
 
@@ -11,69 +11,226 @@
                     <div class="row">
                         <h1>Edit Profile</h1>
                     </div>
-                    <div class="form-group row">
-                        <label for="title" class="col-md-4 col-form-label-lg">Title</label>
 
-                        <input id="title"
-                               type="text"
-                               class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"
-                               name="title"
-                               value="{{ old('title') ?? $user->profile->title }}"
-                               autocomplete="title" autofocus>
+                    @switch($user_type)
 
-                        @if ($errors->has('title'))
-                            <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('title') }}</strong>
-                    </span>
-                        @endif
-                    </div>
+                        @case('student')
 
-                    <div class="form-group row">
-                        <label for="description" class="col-md-4 col-form-label-lg">Description</label>
+                            <div class="form-group row">
 
-                        <input id="description"
-                               type="text"
-                               class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"
-                               name="description" value="{{ old('description') ?? $user->profile->description}}"
-                               autocomplete="description" autofocus>
+                                <label for="jcu_id" class="col-md-4 col-form-label-lg">JCU ID</label>
 
-                        @if ($errors->has('description'))
-                            <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('description') }}</strong>
-                    </span>
-                        @endif
-                    </div>
+                                <input id="jcu_id"
+                                       type="text"
+                                       class="form-control{{ $errors->has('jcu_id') ? ' is-invalid' : '' }}"
+                                       name="jcu_id"
+                                       value="{{ old('jcu_id') ?? $profile->jcu_id }}"
+                                       autocomplete="jcu_id" autofocus>
 
-                    <div class="form-group row">
-                        <label for="url" class="col-md-4 col-form-label-lg">URL</label>
+                                @if ($errors->has('jcu_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('jcu_id') }}</strong>
+                            </span>
+                                @endif
+                            </div>
 
-                        <input id="url"
-                               type="text"
-                               class="form-control{{ $errors->has('url') ? ' is-invalid' : '' }}"
-                               name="url" value="{{ old('url') ?? $user->profile->url}}"
-                               autocomplete="url" autofocus>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label-lg">EMail</label>
 
-                        @if ($errors->has('url'))
-                            <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('url') }}</strong>
-                    </span>
-                        @endif
-                    </div>
+                                <input id="email"
+                                       type="email"
+                                       class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                       name="email" value="{{ old('email') ?? $profile->email}}"
+                                       autocomplete="email" autofocus>
 
-                    <div class="row">
-                        <label for="image" class="col-md-4 col-form-label">Profile Image</label>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                                @endif
+                            </div>
 
-                        <input type="file" class="form-control-file" id="image" name="image">
+                            <div class="form-group row">
+                                <label for="aboutme" class="col-md-4 col-form-label-lg">About Me</label>
 
-                        @if ($errors->has('image'))
-                            <strong>{{ $errors->first('image') }}</strong>
-                        @endif
-                    </div>
+                                <input id="aboutme"
+                                       type="text"
+                                       class="form-control{{ $errors->has('aboutme') ? ' is-invalid' : '' }}"
+                                       name="aboutme" value="{{ old('url') ?? $profile->aboutme}}"
+                                       autocomplete="aboutme" autofocus>
 
-                    <div class="row pt-4">
-                        <button class="btn btn-primary">Save Profile</button>
-                    </div>
+                                @if ($errors->has('aboutme'))
+                                    <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('aboutme') }}</strong>
+                            </span>
+                                @endif
+                            </div>
 
+                            <div class="form-group row">
+                                <label for="education" class="col-md-4 col-form-label-lg">Education</label>
+
+                                <input id="education"
+                                       type="text"
+                                       class="form-control{{ $errors->has('education') ? ' is-invalid' : '' }}"
+                                       name="education" value="{{ old('education') ?? $profile->education}}"
+                                       autocomplete="education" autofocus>
+
+                                @if ($errors->has('education'))
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('education') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="experience" class="col-md-4 col-form-label-lg">Experience</label>
+
+                                <input id="experience"
+                                       type="text"
+                                       class="form-control{{ $errors->has('experience') ? ' is-invalid' : '' }}"
+                                       name="experience" value="{{ old('experience') ?? $profile->experience}}"
+                                       autocomplete="experience" autofocus>
+
+                                @if ($errors->has('experience'))
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('experience') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="certifications" class="col-md-4 col-form-label-lg">Certifications</label>
+
+                                <input id="certifications"
+                                       type="text"
+                                       class="form-control{{ $errors->has('certifications') ? ' is-invalid' : '' }}"
+                                       name="certifications" value="{{ old('certifications') ?? $profile->certifications}}"
+                                       autocomplete="certifications" autofocus>
+
+                                @if ($errors->has('certifications'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('certifications') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        @break
+
+                        @case('company')
+
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label-lg">EMail</label>
+
+                                <input id="email"
+                                       type="email"
+                                       class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                       name="email" value="{{ old('email') ?? $profile->email}}"
+                                       autocomplete="email" autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="website" class="col-md-4 col-form-label-lg">Website</label>
+
+                                <input id="website"
+                                       type="text"
+                                       class="form-control{{ $errors->has('website') ? ' is-invalid' : '' }}"
+                                       name="website" value="{{ old('website') ?? $profile->website}}"
+                                       autocomplete="website" autofocus>
+
+                                @if ($errors->has('website'))
+                                    <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('website') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="aboutus" class="col-md-4 col-form-label-lg">About Us</label>
+
+                                <input id="aboutus"
+                                       type="text"
+                                       class="form-control{{ $errors->has('aboutus') ? ' is-invalid' : '' }}"
+                                       name="aboutus" value="{{ old('aboutus') ?? $profile->aboutus}}"
+                                       autocomplete="aboutus" autofocus>
+
+                                @if ($errors->has('aboutus'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('aboutus') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="address" class="col-md-4 col-form-label-lg">Address</label>
+
+                                <input id="address"
+                                       type="text"
+                                       class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
+                                       name="address" value="{{ old('address') ?? $profile->address}}"
+                                       autocomplete="address" autofocus>
+
+                                @if ($errors->has('address'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        @break
+
+                        @case('teacher')
+
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label-lg">EMail</label>
+
+                                <input id="email"
+                                       type="email"
+                                       class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                       name="email" value="{{ old('email') ?? $profile->email}}"
+                                       autocomplete="email" autofocus>
+
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="faculty" class="col-md-4 col-form-label-lg">Faculty</label>
+
+                                <input id="faculty"
+                                       type="text"
+                                       class="form-control{{ $errors->has('faculty') ? ' is-invalid' : '' }}"
+                                       name="faculty" value="{{ old('faculty') ?? $profile->faculty}}"
+                                       autocomplete="faculty" autofocus>
+
+                                @if ($errors->has('faculty'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('faculty') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        @break
+                    @endswitch
+
+                            <div class="row">
+                                <label for="image" class="col-md-4 col-form-label">Profile Image</label>
+
+                                <input type="file" class="form-control-file" id="image" name="image">
+
+                                @if ($errors->has('image'))
+                                    <strong>{{ $errors->first('image') }}</strong>
+                                @endif
+                            </div>
+
+                            <div class="row pt-4">
+                                <button class="btn btn-primary" type="submit">Save Profile</button>
+                            </div>
                 </div>
             </div>
         </form>

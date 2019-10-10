@@ -4,46 +4,96 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    public function index(User $user)
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view('profile.profile', compact('user'));
+        $this->middleware('auth');
     }
 
-    public function edit(User $user)
+    public function index()
     {
-        $this->authorize('update', $user->profile);
-        return view('profile.edit', compact('user'));
+        $user = Auth()->user();
+        return redirect("/profile/{$user->id}");
     }
 
-    public function update(User $user)
+    public function show(User $user)
     {
-        $this->authorize('update', $user->profile);
 
-        $data = request()->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'url' => 'url',
-            'image' => '',
-        ]);
+        $profile = $user->profile()->get()[0];
+        return view('profile.show', compact('profile'))->with('user_type',$user->user_type);
+    }
+
+    public function edit()
+    {
+        $user = Auth()->user();
+        $profile = $user->profile()->get()[0];
+
+        return view('profile.edit', compact('profile'))->with('user_type',$user->user_type);
+    }
+
+    public function update()
+    {
+        $user = Auth()->user();
 
         if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
-
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image = Image::make(storage_path("app/public/{$imagePath}"))->fit(1000, 1000);
             $image->save();
 
             $imageArray = ['image' => $imagePath];
         }
 
-        auth()->user()->profile->update(array_merge(
-            $data,
-            $imageArray ?? []
-        ));
+        switch($user->user_type){
+            case('student'):
+                $data = request()->validate([
+                    'jcu_id' => 'required',
+                    'email' => ['required', 'email','string'],
+                    'aboutme' => 'string',
+                    'education' => '',
+                    'experience' => '',
+                    'certifications' => '',
+                ]);
+                $user->student()->update(array_merge(
+                    $data,
+                    $imageArray ?? []
+                ));
+                break;
+            case('company'):
+                $data = request()->validate([
+                    'email' => ['required', 'email','string'],
+                    'website' => 'url',
+                    'aboutus' => 'string',
+                    'address' => 'string',
+                    'image' => '',
+                ]);
+                $user->company()->update(array_merge(
+                    $data,
+                    $imageArray ?? []
+                ));
+                break;
+            case('teacher'):
+                $data = request()->validate([
+                    'email' => ['required', 'email','string'],
+                    'faculty' => 'string',
+                    'image' => '',
+                ]);
+                $user->teacher()->update(array_merge(
+                    $data,
+                    $imageArray ?? []
+                ));
+                break;
+        }
 
-        return redirect("/profile/{$user->id}");
+        return redirect(route('profile.index'));
     }
 }

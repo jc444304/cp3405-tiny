@@ -12,7 +12,7 @@ class Teacher extends Model
      * @var array
      */
     protected $fillable = [
-        'faculty','name','email'
+        'faculty','name','email','image'
     ];
 
     /**
@@ -21,5 +21,9 @@ class Teacher extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function profileImage() {
+        return ($this->image) ? '/storage/' . $this->image : '/images/no-image-available.png';
     }
 }

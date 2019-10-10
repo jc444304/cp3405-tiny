@@ -40,14 +40,6 @@ class User extends Authenticatable
     protected static function boot()
     {
         parent::boot();
-
-        static::created(function ($user) {
-            $user->profile()->create([
-                'title' => 'James Cook University',
-                'description' => 'This is where my description goes',
-                'url' => 'https://website.com'
-            ]);
-        });
     }
 
     public function student()
@@ -67,6 +59,19 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->hasOne(Profile::class);
+        $profile = $this;
+        switch ($this->user_type)
+        {
+            case 'student':
+                $profile = $this->student();
+                break;
+            case 'company':
+                $profile = $this->company();
+                break;
+            case 'teacher':
+                $profile = $this->teacher();
+                break;
+        }
+        return $profile;
     }
 }
