@@ -34,6 +34,6 @@ class Student extends Model
     }
 
     public function profileImage() {
-        return ($this->image) ? '/storage/' . $this->image : '/images/no-image-available.png';
+        return $this->image ? '/storage/' . $this->image : '/images/no-image-available.png';
     }
 }
