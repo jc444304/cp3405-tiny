@@ -19,7 +19,7 @@ class SearchController extends Controller
 
 
     /**
-     * Search users in the table by name
+     * Search jobs in the database
      *
      * @param  string $searchterm
      * @return View

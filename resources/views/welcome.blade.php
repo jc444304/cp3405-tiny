@@ -12,46 +12,49 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-group">
-                    <div class="card text-left">
-                        <div class="card-header">
-                            <h5>Terms</h5>
+                <form action="{{ route('search') }}" method="POST">
+                    @csrf
+                    <div class="card-group">
+                        <div class="card text-left">
+                            <div class="card-header">
+                                <h5>Terms</h5>
+                            </div>
+                            <div class="card-body">
+                                <input type="search" name="search_term" class="form-control" placeholder="Title, occupation, keyword, etc">
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <input type="text" class="form-control" placeholder="Title, occupation, keyword, etc">
-                        </div>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-header">
-                            <h5>Categories</h5>
-                        </div>
-                        <div class="card-body">
-                            <select class="custom-select" id="">
-                                <option>Software Development</option>
-                                <option>Data Mining</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card text-right">
-                        <div class="card-header">
-                            <h5>Location</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <select class="custom-select" id="">
-                                    <option selected>Australia</option>
-                                    <optgroup label="Queensland">
-                                        <option>Cairns</option>
-                                        <option>Townsville</option>
-                                    </optgroup>
+                        <div class="card text-center">
+                            <div class="card-header">
+                                <h5>Categories</h5>
+                            </div>
+                            <div class="card-body">
+                                <select class="custom-select" name="industry">
+                                    <option>Software Development</option>
+                                    <option>Data Mining</option>
                                 </select>
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-outline-primary">Search</button>
+                            </div>
+                        </div>
+                        <div class="card text-right">
+                            <div class="card-header">
+                                <h5>Location</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <select class="custom-select" name="location">
+                                        <option selected>Australia</option>
+                                        <optgroup label="Queensland">
+                                            <option>Cairns</option>
+                                            <option>Townsville</option>
+                                        </optgroup>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="container text-center pt-5">
                     <div class="row">
                         <div class="col-md-9 mx-auto">
@@ -101,11 +104,6 @@
                         </div>
                     </div>
                 </div>
-                <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="POST">
-                    @csrf
-                    <input class="form-control mr-sm-2" type="search" placeholder="Enter search term ..." aria-label="'Search" name="searchTerm">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                </form>
             </div>
         </div>
         <div id="searchResults">
