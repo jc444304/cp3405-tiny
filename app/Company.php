@@ -23,6 +23,11 @@ class Company extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function jobs()
+    {
+        return $this->hasMany('App\Job', 'company_id');
+    }
+
     public function profileImage() {
         return ($this->image) ? '/storage/' . $this->image : '/images/no-image-available.png';
     }
