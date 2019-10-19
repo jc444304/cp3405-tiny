@@ -45,6 +45,45 @@ class SearchController extends Controller
             ->get();
 
 
+        if($jobs->isEmpty()){
+            $jobs = DB::table('jobs')
+                ->where([
+                    ['title','like', '%'.$search_term.'%'],
+                    ['industry','like', '%'.$industry.'%'],
+                ])
+                ->orWhere([
+                    ['title','like', '%'.$search_term.'%'],
+                    ['location','like', '%'.$location.'%'],
+                ])
+                ->orWhere([
+                    ['description','like', '%'.$search_term.'%'],
+                    ['industry','like', '%'.$industry.'%'],
+                ])
+                ->orWhere([
+                    ['description','like', '%'.$search_term.'%'],
+                    ['location','like', '%'.$location.'%'],
+                ])
+                ->get();
+        }
+
+        if($jobs->isEmpty()){
+            $jobs = DB::table('jobs')
+                ->where([
+                   ['industry','like', '%'.$industry.'%'],
+                ])
+                ->orWhere([
+                    ['location','like', '%'.$location.'%'],
+                ])
+                ->orWhere([
+                    ['description','like', '%'.$search_term.'%'],
+                ])
+                ->orWhere([
+                    ['title','like', '%'.$search_term.'%'],
+                ])
+                ->get();
+        }
+
+
         return view('jobsearch', ['jobs' => $jobs]);
     }
 }
