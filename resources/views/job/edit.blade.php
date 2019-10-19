@@ -7,7 +7,7 @@
             @method('PATCH')
 
             <div class="row">
-                <div class="col-8 offset-2">
+                <div class="col-8 offset-2 pt-5">
                     <div class="row">
                         <h1>Edit Profile</h1>
                     </div>
@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label-lg">Eail</label>
+                                <label for="email" class="col-md-4 col-form-label-lg">Email</label>
 
                                 <input id="email"
                                        type="email"
@@ -118,7 +118,7 @@
                         @case('company')
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label-lg">Email</label>
+                                <label for="email" class="col-md-4 col-form-label-lg">EMail</label>
 
                                 <input id="email"
                                        type="email"
@@ -185,7 +185,7 @@
                         @case('teacher')
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label-lg">Email</label>
+                                <label for="email" class="col-md-4 col-form-label-lg">EMail</label>
 
                                 <input id="email"
                                        type="email"
