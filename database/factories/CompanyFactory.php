@@ -12,6 +12,6 @@ $factory->define(Company::class, function (Faker $faker) {
         'aboutus' => $faker->sentence,
         'address' => $faker->address,
         'website' => $faker->url,
-        'image' => $faker->image(storage_path("app/public/profile"))
+        'image' => "profile/".basename($faker->image(storage_path("app\public\profile")))
     ];
 });

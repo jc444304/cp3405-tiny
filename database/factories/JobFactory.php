@@ -12,6 +12,6 @@ $factory->define(Job::class, function (Faker $faker) {
         'description' => $faker->paragraph,
         'type' => $faker->randomElement(['Part-Time','Full-Time','Casual']),
         'location' => $faker->city,
-        'industry' => $faker->words(2)
+        'industry' => $faker->words(2,true)
     ];
 });

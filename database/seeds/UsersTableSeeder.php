@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,38 +12,46 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $imagePath = storage_path("app\public\profile");
+        if(!File::exists($imagePath)) {
+            File::makeDirectory($imagePath, 0755, true, true);
+        }
 
         for ($i = 0; $i < 10; $i++) {
 
-            $teacher = factory(App\User::class)->create([
+            $user = factory(App\User::class)->create([
                 //'password'  => bcrypt('password'),
                 'user_type' => 'teacher'
             ]);
 
             factory(App\Teacher::class)->create([
-                'user_id' => $teacher->id,
-                'name' => $teacher->name,
-                'email' => $teacher->email,
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
             ]);
 
-            $student = factory(App\User::class)->create([
+            $user = factory(App\User::class)->create([
                 //'password'  => bcrypt('password'),
                 'user_type' => 'student'
             ]);
 
-            factory(App\Teacher::class)->create([
-                'user_id' => $student->id,
-                'name' => $student->name,
-                'email' => $student->email
+            factory(App\Student::class)->create([
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email
             ]);
 
-            $company = factory(App\User::class)->create([
+            $user = factory(App\User::class)->create([
                 //'password'  => bcrypt('password'),
                 'user_type' => 'company',
             ]);
 
-            factory(App\Company::class)->create([
-                'user_id' => $company->id
+            $company = factory(App\Company::class)->create([
+                'user_id' => $user->id
+            ]);
+
+            factory(App\Job::class,2)->create([
+                'company_id' => $company->id,
             ]);
         }
 

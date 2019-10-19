@@ -3,7 +3,6 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Student;
-use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(Student::class, function (Faker $faker) {
@@ -13,6 +12,6 @@ $factory->define(Student::class, function (Faker $faker) {
         'education' => $faker->sentence,
         'experience' => $faker->sentence,
         'certifications' => $faker->sentence,
-        'image' => $faker->image(storage_path("app/public/profile"))
+        'image' => "profile/".basename($faker->image(storage_path("app\public\profile")))
     ];
 });

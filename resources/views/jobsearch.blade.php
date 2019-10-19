@@ -29,7 +29,9 @@
                 </div>
             @endforeach
         @else
-            No Jobs Found! :(
+            <div class="card">
+                No Jobs Found! :(
+            </div>
         @endif
     </div>
 
