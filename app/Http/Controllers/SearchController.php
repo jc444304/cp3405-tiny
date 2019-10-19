@@ -19,16 +19,32 @@ class SearchController extends Controller
 
 
     /**
-     * Search users in the table by name
+     * Search jobs in the database
      *
      * @param  string $searchterm
      * @return View
      */
-    public function show(Request $request)
+    public function show()
     {
-        $searchTerm = $request->searchTerm;
-        $users = DB::table('users')->where('name', $searchTerm)->select('name','email')->get();
+        $search_term = request('search_term');
+        $industry = request('industry');
+        $location = request('location');
 
-        return view('welcome', ['users' => $users]);
+
+        $jobs = DB::table('jobs')
+            ->where([
+                ['title','like', '%'.$search_term.'%'],
+                ['industry','like', '%'.$industry.'%'],
+                ['location','like', '%'.$location.'%'],
+                ])
+            ->orWhere([
+                ['description','like', '%'.$search_term.'%'],
+                ['industry','like', '%'.$industry.'%'],
+                ['location','like', '%'.$location.'%'],
+                ])
+            ->get();
+
+
+        return view('jobsearch', ['jobs' => $jobs]);
     }
 }

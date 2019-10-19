@@ -15,7 +15,7 @@ class CreateJobsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('company_id');
             $table->timestamps();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('type');
             $table->string('location');
             $table->string('industry')->nullable();
