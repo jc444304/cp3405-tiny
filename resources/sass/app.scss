@@ -44,3 +44,12 @@
     transition: background-color 1s ease;
 }
 
+.no-style {
+    text-decoration: none;
+    color: #212529;
+    &:hover {
+        text-decoration: none;
+        color: #212529;
+    }
+}
+

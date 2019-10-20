@@ -16,10 +16,11 @@ class CreateJobsTable extends Migration
             $table->integer('company_id');
             $table->timestamps();
             $table->string('title');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('type');
             $table->string('location');
             $table->string('industry')->nullable();
+            $table->mediumInteger('salary')->default(0);
         });
     }
 
