@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('/');
@@ -25,14 +27,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('profile')->group(function () {
-    Route::get('/', 'ProfilesController@index')->name('profile.index'); // When the user wants to view their own profile
-    Route::get('/edit', 'ProfilesController@edit')->name('profile.edit'); // When a use wants to edit their own profile
-    Route::patch('/update', 'ProfilesController@update')->name('profile.update'); // When the user submits their edits to their profile
-    Route::get('/{user}', 'ProfilesController@show')->name('profile.show'); // When the user wants to view another user's profile
+    Route::get('/', 'ProfilesController@index')->name('profile.index'); // View own profile if logged in
+    Route::get('/edit', 'ProfilesController@edit')->name('profile.edit'); // Edit profile
+    Route::patch('/update', 'ProfilesController@update')->name('profile.update'); // Updates changes to profile
+    Route::get('/{user}', 'ProfilesController@show')->name('profile.show'); // View profile based on id
 });
 
 Route::prefix('job')->group(function () {
-    Route::get('/{job}', 'JobsController@show');
+    Route::post('/', 'JobsController@store')->name('job.index');
     Route::get('/create', 'JobsController@create')->name('job.create');
-    Route::post('/', 'JobsController@store');
+    Route::get('{job}/edit', 'JobsController@edit')->name('job.edit');
+    Route::patch('/update', 'JobsController@update')->name('job.update');
+    Route::get('/{job}', 'JobsController@show')->name('job.show');
 });
