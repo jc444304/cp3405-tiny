@@ -10679,4 +10679,69 @@ a.text-dark:focus {
   box-shadow: none !important;
   transition: background-color 1s ease;
 }
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgray;
+  color: black;
+  text-align: center;
+}
+.footer-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-container .footer-section{
+  flex: 1;
+  padding: 25px;
+  text-align: center;
+}
+.social-icon-link{
+  width: 55px;
+  margin: 10px;
+}
+.footer-social-icon-section{
+  display: flex;
+  justify-content: center;
+}
 
+.footer-affiliate-link-image1{
+  width: 6.5rem;
+}
+.footer-affiliate-link-image2{
+  width: 6.875rem;
+}
+.footer-affiliate-link-image3{
+  width: 6.5rem;
+}
+.footer-affiliate-link-image4{
+  width: 6.875rem;
+}
+.footer-affiliate-link-image5{
+  width: auto;
+  height: 40px;
+}
+.footer-affiliate-icon-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.footer-traditional-text{
+  margin: 0 0.8125rem;
+}
+.affiliate-icon-link{
+  margin: 5px 8px 0;
+  flex-shrink: 0;
+}
+.affiliates-traditional-text{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-section.copyright{
+  min-width: 427.33px;
+}
