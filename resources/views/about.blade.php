@@ -18,13 +18,13 @@
                             <p class="">Joblink JCU is a child project of the TINY team of design thinking where our goal is to create a hub where individuals of the fine institution of James Cook University can come to seek jobs in the IT related field
                             from employers that are seeking students from this establishment. The difference between Joblink JCU and any other job seeking websites is that we incorporate a trifecta system between students
                                 , staff and employers where its a lot more personal where teachers can help endorse students making it a bit easier to gain access into the work field during or after their studies. To be continued... </p>
-                            <img class="jcu-trifecta-image" src="http://joblink.test/images/trifecta-system.png" alt="JCU Trifecta System">
+                            <img class="jcu-trifecta-image" src="/images/trifecta-system.png" alt="JCU Trifecta System">
                             <div class="creator-container">
                                 <div class="creator-container-header-text"><h3><b>Creators</b></h3>
                                 </div>
                                 <div class="creator-individual-container">
                                     <div class="creator-individual-image">
-                                        <img class="creator-image" src="http://joblink.test/images/no-image-available.png" alt="Creator Image">
+                                        <img class="creator-image" src="/images/no-image-available.png" alt="Creator Image">
                                     </div>
                                     <div class="creator-individual-wrapper">
                                         <div class="creator-indvidual-header"><h5>Thomas Leumann</h5>
@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="creator-individual-container">
                                     <div class="creator-individual-image">
-                                        <img class="creator-image" src="http://joblink.test/images/no-image-available.png" alt="Creator Image">
+                                        <img class="creator-image" src="/images/no-image-available.png" alt="Creator Image">
                                     </div>
                                     <div class="creator-individual-wrapper">
                                         <div class="creator-indvidual-header"><h5>Isabelle Carlsson</h5>
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="creator-individual-container">
                                     <div class="creator-individual-image">
-                                        <img class="creator-image" src="http://joblink.test/images/no-image-available.png" alt="Creator Image">
+                                        <img class="creator-image" src="/images/no-image-available.png" alt="Creator Image">
                                     </div>
                                     <div class="creator-individual-wrapper">
                                         <div class="creator-indvidual-header"><h5>Yvan Burrie</h5>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="creator-individual-container">
                                     <div class="creator-individual-image">
-                                        <img class="creator-image" src="http://joblink.test/images/no-image-available.png" alt="Creator Image">
+                                        <img class="creator-image" src="/images/no-image-available.png" alt="Creator Image">
                                     </div>
                                     <div class="creator-individual-wrapper">
                                         <div class="creator-indvidual-header"><h5>Nickolas Jucker</h5></div>
@@ -78,15 +78,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="searchResults">
-            @if(! empty($users))
-                @foreach($users as $user)
-                    <ul>
-                        <li>{{ $user->name }} : {{ $user->email }}</li>
-                    </ul>
-                @endforeach
-            @endif
         </div>
     </div>
 @endsection

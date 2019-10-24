@@ -10817,7 +10817,7 @@ img.creator-image {
 }
 
 .flex-container {
-  background-image: url(http://joblink.test/img/jcu_campus.jpg);
+  background-image: url(/images/jcu_campus.jpg);
   background-repeat: no-repeat;
   background-position: 0px 120px;
   background-size: 100% 50%;

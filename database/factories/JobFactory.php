@@ -14,4 +14,6 @@ $factory->define(Job::class, function (Faker $faker) {
         'location' => $faker->city,
         'industry' => $faker->words(2,true)
     ];
+
+
 });
