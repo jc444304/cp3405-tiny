@@ -42,7 +42,7 @@ class SearchController extends Controller
                 ['industry','like', '%'.$industry.'%'],
                 ['location','like', '%'.$location.'%'],
                 ])
-            ->get();
+            ->paginate(3);
 
 
         if($jobs->isEmpty()){
@@ -63,7 +63,7 @@ class SearchController extends Controller
                     ['description','like', '%'.$search_term.'%'],
                     ['location','like', '%'.$location.'%'],
                 ])
-                ->get();
+                ->paginate(3);
         }
 
         if($jobs->isEmpty()){
@@ -80,7 +80,7 @@ class SearchController extends Controller
                 ->orWhere([
                     ['title','like', '%'.$search_term.'%'],
                 ])
-                ->get();
+                ->paginate(3);
         }
 
 

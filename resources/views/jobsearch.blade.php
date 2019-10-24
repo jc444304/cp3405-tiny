@@ -9,7 +9,7 @@
     <div id="searchResults" class="p-5" >
         @if(!empty($jobs))
             <h3>
-                Found {{$jobs->count()}} jobs!
+                Found {{$jobs->total()}} jobs!
             </h3>
             @foreach($jobs as $job)
                 <div class="card mb-3">
@@ -39,12 +39,14 @@
                     </div>
                 </div>
             @endforeach
+            {{ $jobs->links() }}
         @else
             <div class="card">
                 No Jobs Found! :(
             </div>
         @endif
     </div>
+
     </div>
 
 @endsection
