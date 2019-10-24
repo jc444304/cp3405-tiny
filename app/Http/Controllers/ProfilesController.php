@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
@@ -28,7 +26,6 @@ class ProfilesController extends Controller
 
     public function show(User $user)
     {
-
         $profile = $user->profile()->get()[0];
         return view('profile.show', compact('profile'))->with('user_type',$user->user_type);
     }
