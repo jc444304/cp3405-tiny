@@ -106,14 +106,5 @@
                 </div>
             </div>
         </div>
-        <div id="searchResults">
-            @if(! empty($users))
-                @foreach($users as $user)
-                    <ul>
-                        <li>{{ $user->name }} : {{ $user->email }}</li>
-                    </ul>
-                @endforeach
-            @endif
-        </div>
     </div>
 @endsection

@@ -69,7 +69,7 @@
                             @if (Route::current()->getName() !== '/')
                             <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="POST">
                                 @csrf
-                                <input class="form-control mr-sm-2" type="search" placeholder="Enter search term ..." aria-label="'Search" name="searchterm">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Enter search term ..." aria-label="'Search" name="search_term">
                                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                             </form>
                             @endif
