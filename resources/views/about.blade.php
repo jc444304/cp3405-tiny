@@ -4,16 +4,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-9">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-md-9 mx-auto">
-                            <h1>About</h1>
-                        </div>
-                    </div>
-                </div>
                 <div class="text-center">
                     <div class="card mb-4">
-                       <div class="card-header">Joblink JCU</div>
+                       <div class="card-header"><h1>About JobLink</h1></div>
                         <div class="card-body">
                             <p class="">Joblink JCU is a child project of the TINY team of design thinking where our goal is to create a hub where individuals of the fine institution of James Cook University can come to seek jobs in the IT related field
                             from employers that are seeking students from this establishment. The difference between Joblink JCU and any other job seeking websites is that we incorporate a trifecta system between students
@@ -44,7 +37,7 @@
                                         </div>
                                         <div class="creator-individual-text">
                                             <p><b>Bio:</b></p>
-                                            <p>Third year JCU IT student of class code CP3405. </p>
+                                            <p>Third year JCU IT student of class code CP3405. Born in Sweden but have lived in Australia since 2014. Realised in her last semester of IT that she wants to be a rockstar.</p>
                                         </div>
                                     </div>
                                 </div>

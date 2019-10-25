@@ -42,12 +42,11 @@ class JobsController extends Controller
         return view('job.show', compact('job'))->with('user_type', $user->user_type);
     }
 
-    public function edit()
+    public function edit(Job $job)
     {
         $user = Auth()->user();
-        $job = Job::findOrFail(1);
         if ($user->user_type == 'company' && $job->company->user_id == $user->id) {
-            return view('job.edit', compact('job'))->with('user', $user);
+            return view('job.edit', compact('job'));//->with('user', $user);
         } else {
             return redirect("/profile/{$user->id}");
         }

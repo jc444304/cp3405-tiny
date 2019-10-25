@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-                <img class="mb-4 align-self-center" src="images/jculogo.png" alt="" width="72" height="72">
+                <img class="pt-2 align-self-center" src="images/login-header.bmp" alt="">
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

@@ -40,7 +40,7 @@ Route::prefix('profile')->group(function () {
 Route::prefix('job')->group(function () {
     Route::post('/', 'JobsController@store')->name('job.index');
     Route::get('/create', 'JobsController@create')->name('job.create');
-    Route::get('{job}/edit', 'JobsController@edit')->name('job.edit');
+    Route::get('/{job}/edit', 'JobsController@edit')->name('job.edit');
     Route::patch('/update', 'JobsController@update')->name('job.update');
     Route::get('/{job}', 'JobsController@show')->name('job.show');
 });
