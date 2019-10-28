@@ -12,9 +12,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $imagePath = storage_path("app\public\profile");
+        $imagePath = storage_path("app/public/profile");
         if(!File::exists($imagePath)) {
-            File::makeDirectory($imagePath, 0755, true, true);
+            File::makeDirectory($imagePath, 755, true, true);
         }
 
         for ($i = 0; $i < 10; $i++) {

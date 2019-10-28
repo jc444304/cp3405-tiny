@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static find($company_id)
+ */
 class Company extends Model
 {
     /**

@@ -17,6 +17,7 @@
                     <hr>
                     <h3>Description</h3>
                     <p>{{ $job->description }}</p>
+                    <p class="text-right">Job posted by <a href="{{route('profile.show',\App\Company::find($job->company_id)->user_id)}}">{{ \App\Company::find($job->company_id)->name }}</a></p>
 
                     @if($user_type == 'student')
                         <div class="col-12 pt-5">

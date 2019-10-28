@@ -11,23 +11,28 @@
                 </div>
             </div>
             <div class="row m-0">
-                <div class="col-3 p-5">
+                <div class="col-sm-3 p-5">
                     <img class="profile-image rounded-circle" alt="Profile Image" src="{{ $profile->profileImage() }}">
+                    <hr>
                     @if($user_type == 'student')
                         <p>JCU ID: <span class="font-weight-bold">{{ $profile->jcu_id ?? '10234567'}}</span></p>
+                        <hr>
                     @endif
                     <div class="pl-3">
                         <p class="pt-4"><a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a></p>
+
                         @if($user_type == 'company')
                             <p class="pt-2">
                                 <a href="{{$profile->website ?? 'https://website.com'}}">{{ $profile->website ?? 'https://website.com'}}</a>
                             </p>
+
                             <p class="pt-2">
                                 <a class="no-style"
                                    href="https://maps.google.com/?q={{ $profile->address ?? 'James Cook University Australia, Cairns, Smithfield Campus'}}">
                                     {{ $profile->address ?? '14-88 McGregor Road, Smithfield, Cairns, QLD 4878'}}
                                 </a>
                             </p>
+
                         @elseif($user_type == 'teacher')
                             <p class="pt-2">Faculty: <span
                                     class="font-weight-bold">{{ $profile->faculty ?? 'Information Technology'}}</span>
@@ -36,7 +41,7 @@
                     </div>
                 </div>
 
-                <div class="col-9 p-5">
+                <div class="col-sm-9 p-5">
                     @switch($user_type)
                         @case('student')
                         <div>
@@ -44,15 +49,15 @@
                             <hr>
                             <div class="pt-2">{{ $profile->aboutme ?? 'Hire me because...'}}</div>
 
-                            <h3>Education</h3>
+                            <h3 class="pt-4">Education</h3>
                             <hr>
                             <div class="pt-2">{{ $profile->education ?? 'No Education'}}</div>
 
-                            <h3>Experience</h3>
+                            <h3 class="pt-4">Experience</h3>
                             <hr>
                             <div class="pt-2">{{ $profile->experience ?? 'No Work Experience'}}</div>
 
-                            <h3>Certifications</h3>
+                            <h3 class="pt-4">Certifications</h3>
                             <hr>
                             <div class="pt-2">{{ $profile->certifications ?? 'No Certifications'}}</div>
                         </div>
@@ -61,8 +66,9 @@
                         @case('company')
                         <div>
                             <h3>About</h3>
-                            <div class="pt-2">{{ $profile->aboutus ?? 'Apply to our jobs because...'}}</div>
                             <hr>
+                            <div class="pt-2">{{ $profile->aboutus ?? 'Apply to our jobs because...'}}</div>
+
 
                             <h3 class="pt-4">Jobs</h3>
                             <hr>

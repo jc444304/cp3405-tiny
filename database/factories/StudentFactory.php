@@ -12,6 +12,6 @@ $factory->define(Student::class, function (Faker $faker) {
         'education' => $faker->sentence,
         'experience' => $faker->sentence,
         'certifications' => $faker->sentence,
-        'image' => "profile/".basename($faker->image(storage_path("app\public\profile")))
+        'image' => "profile/".basename($faker->image(storage_path("app/public/profile")))
     ];
 });
