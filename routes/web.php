@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/about', function () {
     return view('about');
-})->name('/');
+})->name('about');
 
 // search route placeholder for now until controller made
 //return the name('search) allows for easy use in views when using action={{route('search)}}

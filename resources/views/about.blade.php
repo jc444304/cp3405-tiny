@@ -7,10 +7,19 @@
                 <div class="text-center">
                     <div class="card mb-4">
                        <div class="card-header"><h1>About JobLink</h1></div>
-                        <div class="card-body">
-                            <p class="">Joblink JCU is a child project of the TINY team of design thinking where our goal is to create a hub where individuals of the fine institution of James Cook University can come to seek jobs in the IT related field
-                            from employers that are seeking students from this establishment. The difference between Joblink JCU and any other job seeking websites is that we incorporate a trifecta system between students
-                                , staff and employers where its a lot more personal where teachers can help endorse students making it a bit easier to gain access into the work field during or after their studies. To be continued... </p>
+                            <div class="card-body">
+                                <p>JCU Joblink is a child project from the team called TINY of design thinking where our goal is to create a hub where individuals of the fine institution of James Cook University can come to seek jobs in the IT related field
+                                    from employers that are seeking students from this establishment. The difference between JCU Joblink and any other job seeking websites is that we incorporate a trifecta system between students
+                                , staff and employers where it’s a lot more personal.</p>
+
+                                <p>Where teachers can help endorse students making it a bit easier to gain access into the work field during or after their studies.</p>
+
+                                <p>Employers can look to teachers to give recommendations of appropriate students that could be an employee the company is looking for or they can search through students that match their search queries.</p>
+
+                                <p>Students can search for jobs as one normally would on a job search website or contact staff for job recommendations that they deem would be a beneficial application for the student to try out.</p>
+
+                                <p>This system should help in getting a job as without help it can be very hard at times as your resume can be lost in the pile of other people’s resumes that employers usually get. It’ll also help employers by giving them a place that they can go to find qualified employees with the insurance of them studying or have studied a higher education level.
+                                    </p>
                             <img class="jcu-trifecta-image" src="/images/trifecta-system.png" alt="JCU Trifecta System">
                             <div class="creator-container">
                                 <div class="creator-container-header-text"><h3><b>Creators</b></h3>

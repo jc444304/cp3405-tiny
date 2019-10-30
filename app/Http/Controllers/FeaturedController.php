@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 class FeaturedController extends Controller
 {
     public function index(){
-        $features= DB::table('jobs')->latest()->take(3)->get();
-        return view('welcome', compact('features'));
+        $jobfeatured = DB::table('jobs')->latest()->take(3)->get();
+        $companyfeatured = DB::table('companies')->latest()->take(3)->get();
+        return view('welcome', compact('jobfeatured', 'companyfeatured'));
     }
 }
