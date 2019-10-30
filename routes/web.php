@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/about', function () {
     return view('about');
-})->name('/');
+})->name('about');
 
 // search route placeholder for now until controller made
 //return the name('search) allows for easy use in views when using action={{route('search)}}
@@ -29,6 +29,7 @@ Route::any('/search', 'SearchController@show')->name('search');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'FeaturedController@index');
 
 Route::prefix('profile')->group(function () {
     Route::get('/', 'ProfilesController@index')->name('profile.index'); // View own profile if logged in
