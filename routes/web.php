@@ -29,6 +29,7 @@ Route::any('/search', 'SearchController@show')->name('search');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'FeaturedController@index');
 
 Route::prefix('profile')->group(function () {
     Route::get('/', 'ProfilesController@index')->name('profile.index'); // View own profile if logged in

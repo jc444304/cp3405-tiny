@@ -64,7 +64,7 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="about">About</a>
+                                <a class="nav-link" href="/about">About</a>
                             </li>
                             @if (Route::current()->getName() !== '/')
                             <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="POST">

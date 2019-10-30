@@ -12,7 +12,7 @@
             </div>
             <div class="row m-0">
                 <div class="col-sm-3 p-5">
-                    <img class="profile-image rounded-circle" alt="Profile Image" src="{{ $profile->profileImage() }}">
+                    <img class="profile-image rounded-circle" alt="Profile Image" src="{{ $profile->profileImage() }}" onerror="this.src='/images/no-image-available.png';">
                     <hr>
                     @if($user_type == 'student')
                         <p>JCU ID: <span class="font-weight-bold">{{ $profile->jcu_id ?? '10234567'}}</span></p>

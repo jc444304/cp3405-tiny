@@ -10682,6 +10682,19 @@ a.text-dark:focus {
   transition: background-color 1s ease;
 }
 
+.navbar-collapse {
+  text-align: right;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+  font-size: 18px;
+}
+
+form.form-inline.my-2.my-lg-0 {
+  margin-left: auto;
+}
+
 .no-style {
   text-decoration: none;
   color: #212529;
@@ -10841,5 +10854,51 @@ main.site-content {
 
 .card-title {
   font-size: x-large;
+  font-weight: bold;
+}
+
+.card-footer p {
+  margin: 0;
+}
+
+.card-header h4 {
+  margin: 0;
+}
+
+h3,
+h4 {
+  margin: 0;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.form.form-inline.my-2.my-lg-0 {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 991px) {
+  .flex-container {
+    padding-top: 270px;
+  }
+}
+
+input.form-control.mr-sm-2 {
+  width: unset;
+}
+
+.text-right {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: center !important;
+}
+
+.mb-4 {
+  margin-top: 1.5rem;
 }
 
