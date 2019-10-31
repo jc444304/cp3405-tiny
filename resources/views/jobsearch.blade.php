@@ -33,7 +33,7 @@
                                 <div class="d-flex justify-content-between align-items-baseline font-weight-bold">
                                     <p>{{ $job->type }}</p>
                                     <p>{{ $job->location }}</p>
-                                    <p>{{ $job->industry }}</p>
+                                    <p>{{ \App\JobCategory::find($job->category_id)->title }}</p>
                                     <p>${{ $job->salary }} / year</p>
                                 </div>
                             </div>

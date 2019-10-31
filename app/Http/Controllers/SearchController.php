@@ -27,58 +27,62 @@ class SearchController extends Controller
     public function show()
     {
         $search_term = request('search_term');
-        $industry = request('industry');
         $location = request('location');
+        $categoryId = (int)request('category_id');
 
 
         $jobs = DB::table('jobs')
             ->where([
-                ['title','like', '%'.$search_term.'%'],
-                ['industry','like', '%'.$industry.'%'],
-                ['location','like', '%'.$location.'%'],
-                ])
+                ['title', 'like', '%' . $search_term . '%'],
+                //['location', 'like', '%' . $location . '%'],
+                $categoryId === 0 ?
+                    ['category_id', '>', 0] :
+                    ['category_id', '=', $categoryId],
+            ])
             ->orWhere([
-                ['description','like', '%'.$search_term.'%'],
-                ['industry','like', '%'.$industry.'%'],
-                ['location','like', '%'.$location.'%'],
-                ])
+                ['description', 'like', '%' . $search_term . '%'],
+                //['location', 'like', '%' . $location . '%'],
+                $categoryId === 0 ?
+                    ['category_id', '>', 0] :
+                    ['category_id', '=', $categoryId],
+            ])
             ->paginate(3);
 
 
-        if($jobs->isEmpty()){
+        if ($jobs->isEmpty()) {
             $jobs = DB::table('jobs')
                 ->where([
-                    ['title','like', '%'.$search_term.'%'],
-                    ['industry','like', '%'.$industry.'%'],
+                    ['title', 'like', '%' . $search_term . '%'],
+                    ['category_id', '==', $categoryId],
                 ])
                 ->orWhere([
-                    ['title','like', '%'.$search_term.'%'],
-                    ['location','like', '%'.$location.'%'],
+                    ['title', 'like', '%' . $search_term . '%'],
+                    //['location', 'like', '%' . $location . '%'],
                 ])
                 ->orWhere([
-                    ['description','like', '%'.$search_term.'%'],
-                    ['industry','like', '%'.$industry.'%'],
+                    ['description', 'like', '%' . $search_term . '%'],
+                    ['category_id', '==', $categoryId],
                 ])
                 ->orWhere([
-                    ['description','like', '%'.$search_term.'%'],
-                    ['location','like', '%'.$location.'%'],
+                    ['description', 'like', '%' . $search_term . '%'],
+                    //['location', 'like', '%' . $location . '%'],
                 ])
                 ->paginate(3);
         }
 
-        if($jobs->isEmpty()){
+        if ($jobs->isEmpty()) {
             $jobs = DB::table('jobs')
                 ->where([
-                   ['industry','like', '%'.$industry.'%'],
+                    ['category_id', '==', $categoryId],
                 ])
                 ->orWhere([
-                    ['location','like', '%'.$location.'%'],
+                    //['location', 'like', '%' . $location . '%'],
                 ])
                 ->orWhere([
-                    ['description','like', '%'.$search_term.'%'],
+                    ['description', 'like', '%' . $search_term . '%'],
                 ])
                 ->orWhere([
-                    ['title','like', '%'.$search_term.'%'],
+                    ['title', 'like', '%' . $search_term . '%'],
                 ])
                 ->paginate(3);
         }

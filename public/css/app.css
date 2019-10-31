@@ -10944,6 +10944,7 @@ input.form-control.mr-sm-2 {
 .card-footer-split-one {
   margin-right: auto;
   max-width: 50%;
+  margin-left: auto;
 }
 
 .card-footer-split-two {

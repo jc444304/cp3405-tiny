@@ -12,6 +12,6 @@ class JobCategory extends Model
 
     public function job()
     {
-        return $this->hasOne('App/JobCategory', 'category_id');
+        return $this->belongsTo('App/Job', 'category_id');
     }
 }

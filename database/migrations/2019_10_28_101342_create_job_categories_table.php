@@ -15,10 +15,8 @@ class CreateJobCategoriesTable extends Migration
     {
         Schema::create('job_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('parent_id');
-            $table->foreign('parent_id')->references('id')->on('job_categories');
             $table->timestamps();
-            $table->string('title');
+            $table->string('title')->unique();
         });
     }
 
