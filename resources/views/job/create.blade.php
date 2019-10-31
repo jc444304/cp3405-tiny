@@ -32,9 +32,9 @@
                             <label for="description" class="col-md-4 col-form-label-lg">Description</label>
 
                             <textarea id="description"
-                                   type="text"
-                                   class="form-control @error('description') is-invalid @enderror"
-                                   name="description" required
+                                      type="text"
+                                      class="form-control @error('description') is-invalid @enderror"
+                                      name="description" required
                                       autocomplete="description" autofocus></textarea>
 
                             @error('description')
@@ -79,20 +79,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="industry" class="col-md-4 col-form-label-lg">Industry</label>
+                            <label for="location" class="col-md-4 col-form-label-lg">Categories</label>
 
-                            <input id="industry"
-                                   type="text"
-                                   class="form-control @error('industry') is-invalid @enderror"
-                                   name="industry"
-                                   value="{{ old('industry') }}" required
-                                   autocomplete="industry" autofocus>
-
-                            @error('industry')
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                            @enderror
+                            <select class="custom-select" name="category_id">
+                                @foreach (\App\JobCategory::all() as $category)
+                                    <option
+                                        value="{{ $category->id }}">{{ htmlspecialchars($category->title) }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group row">
