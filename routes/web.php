@@ -13,10 +13,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
-
 Route::get('/about', function () {
     return view('about');
 })->name('about');
@@ -29,7 +25,7 @@ Route::any('/search', 'SearchController@show')->name('search');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'FeaturedController@index');
+Route::get('/', 'FeaturedController@index')->name('welcome');
 
 Route::prefix('profile')->group(function () {
     Route::get('/', 'ProfilesController@index')->name('profile.index'); // View own profile if logged in

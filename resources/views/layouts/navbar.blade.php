@@ -12,7 +12,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('about') }}">About</a>
             </li>
-            @if (Route::current()->getName() !== '/')
+            @if (Route::current()->getName() !== 'welcome')
                 <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="POST">
                     @csrf
                     <input class="form-control mr-sm-2" type="search" placeholder="Enter search term ..." aria-label="'Search" name="search_term">
