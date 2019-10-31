@@ -26,9 +26,11 @@
                                         <h5>Categories</h5>
                                     </div>
                                     <div class="card-body">
-                                        <select class="custom-select" name="industry">
-                                            <option>Software Development</option>
-                                            <option>Data Mining</option>
+                                        <select class="custom-select" name="category_id">
+                                            <option value="0">All</option>
+                                            @foreach (\App\JobCategory::all() as $category)
+                                                <option value="{{ $category->id }}">{{ htmlspecialchars($category->title) }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

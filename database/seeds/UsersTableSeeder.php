@@ -13,8 +13,14 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $imagePath = storage_path("app/public/profile");
-        if(!File::exists($imagePath)) {
+        if (!File::exists($imagePath)) {
             File::makeDirectory($imagePath, 755, true, true);
+        }
+
+        $categories = [];
+        foreach (range(1, 5) as $i) {
+            $category = factory(App\JobCategory::class)->create();
+            $categories[] = $category;
         }
 
         for ($i = 0; $i < 10; $i++) {
@@ -50,10 +56,13 @@ class UsersTableSeeder extends Seeder
                 'user_id' => $user->id
             ]);
 
-            factory(App\Job::class,2)->create([
+            $index = array_rand($categories);
+            $category = $categories[$index];
+            $job = factory(App\Job::class,2)->create([
                 'company_id' => $company->id,
+                'category_id' => $category->id,
             ]);
-        }
 
+        }
     }
 }

@@ -14,11 +14,17 @@ class Job extends Model
         'type',
         'location',
         'industry',
+        'category',
         'salary',
     ];
 
     public function company()
     {
         return $this->belongsTo('App\Company');
+    }
+
+    public function category()
+    {
+        return $this->hasOne('App\JobCategory');
     }
 }
