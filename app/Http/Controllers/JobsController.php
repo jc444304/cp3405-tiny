@@ -27,8 +27,8 @@ class JobsController extends Controller
             'description' => 'required',
             'type' => 'required',
             'location' => 'required',
-            'industry' => 'required',
             'salary' => 'required',
+            'category_id' => 'required'
         ]);
 
         auth()->user()->company->jobs()->create($data);
@@ -61,8 +61,8 @@ class JobsController extends Controller
             'description' => 'required',
             'type' => 'required',
             'location' => 'required',
-            'industry' => 'required',
             'salary' => 'required',
+            'category_id' => 'required',
         ]);
         $job->update($data);
         $job->save();

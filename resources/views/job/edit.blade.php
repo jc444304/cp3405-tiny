@@ -81,14 +81,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="location" class="col-md-4 col-form-label-lg">Categories</label>
-
-                            <select class="custom-select" name="category_id">
+                            <label for="category_id" class="col-md-4 col-form-label-lg">Categories</label>
+                            <select id="category_id" class="custom-select form-control @error('category_id') is-invalid @enderror"
+                                    name="category_id" required>
                                 @foreach (\App\JobCategory::all() as $category)
                                     <option
                                         value="{{ $category->id }}">{{ htmlspecialchars($category->title) }}</option>
                                 @endforeach
                             </select>
+                            @error('category_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="form-group row">
