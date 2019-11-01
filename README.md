@@ -60,8 +60,10 @@ DB_USERNAME=root
 DB_PASSWORD=secret
 ```
 
-- In the machine run `php artisan migrate` from the synced folder.
+- In the machine run `composer install` from the synced folder to install dependencies.
 
-- Make sure dependencies are installed using `composer install`, `npm install` and `npm run dev`.
+- Run `php artisan migrate --seed` to populate the database with tables and example entries.
+
+- Run `php artisan storage:link` to enable the images to be uploaded and displayed correctly.
 
 - Optionally add joblink.test to your hosts files, otherwise access the website at [192.168.10.10](http://192.168.10.10)
